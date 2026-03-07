@@ -3,7 +3,7 @@ import location from "../../assets/images/location.jpg";
 import { IoCloseOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
-const ProjectLocationMap = ({project}) => {
+const ProjectLocationMap = ({ project, brochureUrl }) => {
 
    if (!project) return <p>Card not found</p>;
 console.log(project)
@@ -16,6 +16,18 @@ console.log(project)
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const link = document.createElement("a");
+    link.href = brochureUrl || "/nspdf.pdf";
+    link.download = `${project.title || "Brochure"}.pdf`;
+    link.target = "_blank";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    handleClose();
   };
 
   return (
@@ -120,7 +132,7 @@ console.log(project)
                       </span>
                     </h2>
 
-                    <form className="space-y-6">
+                    <form className="space-y-6" onSubmit={handleSubmit}>
                       {/* Full Name */}
                       <div>
                         <label className="block text-gray-700 font-semibold mb-1">

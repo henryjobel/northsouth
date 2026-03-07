@@ -28,17 +28,23 @@ export default function Projects({ type = "all" }) {
   }
 
   return (
-    <div className="container mx-auto px-6 py-16">
-      <h1 className="text-4xl font-bold text-center mb-10">
-        Our Projects
-      </h1>
+    <div className="bg-gradient-to-b from-white to-gray-50 px-6 py-20">
+      {/* Section Header */}
+      <div className="flex flex-col items-center mb-14">
+        <p className="text-green-600 text-sm font-semibold uppercase tracking-widest mb-2">Portfolio</p>
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 text-center">
+          Our Projects
+        </h1>
+        <div className="w-16 h-1 bg-green-500 rounded-full mt-4" />
+        <p className="text-gray-500 mt-4 text-center max-w-xl">
+          Explore our premium residential and commercial developments across Dhaka.
+        </p>
+      </div>
 
       {filteredProjects.length === 0 ? (
-        <p className="text-center text-gray-500">
-          No projects found
-        </p>
+        <p className="text-center text-gray-500">No projects found</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredProjects.map((p) => (
             <ProjectCard key={p._id} project={p} />
           ))}

@@ -32,6 +32,7 @@ const [keyPhotos, setKeyPhotos] = useState({
   typicalFloor: null,
   roofFloor: null,
 });
+const [brochureFile, setBrochureFile] = useState(null);
 
 
   // Nested objects
@@ -110,6 +111,7 @@ if (mapLocations.length > 0) mapLocations.forEach(img => formData.append("mapLoc
   if (keyPhotos.roofFloor) {
     formData.append("roofFloor", keyPhotos.roofFloor);
   }
+  if (brochureFile) formData.append("brochure", brochureFile);
 
 
 // Nested objects as JSON
@@ -259,6 +261,15 @@ formData.append("specs", JSON.stringify(specs));
       onChange={(e) =>
         setKeyPhotos({ ...keyPhotos, roofFloor: e.target.files[0] })
       }
+    />
+  </div>
+
+  <div>
+    <label className="font-semibold">Brochure (PDF)</label>
+    <input
+      type="file"
+      accept="application/pdf"
+      onChange={(e) => setBrochureFile(e.target.files[0])}
     />
   </div>
 </div>

@@ -5,7 +5,7 @@ import apiInstance from "../../config/axios";
 export const createContact = async (formData) => {
   try {
     const response = await apiInstance.post("/contact", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
+      headers: { "Content-Type": "application/json" },
     });
     return response.data;
   } catch (error) {

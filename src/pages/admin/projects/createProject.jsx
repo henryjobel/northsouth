@@ -17,6 +17,7 @@ const [loading, setLoading] = useState(false); // new loading state
 const [groundFloorFile, setGroundFloorFile] = useState(null);
 const [typicalFloorFile, setTypicalFloorFile] = useState(null);
 const [roofFloorFile, setRoofFloorFile] = useState(null);
+const [brochureFile, setBrochureFile] = useState(null);
 
   const [mapLocations, setMapLocations] = useState([]);
   const [description, setDescription] = useState({
@@ -59,6 +60,7 @@ formData.append("basement", basementFile);
 formData.append("groundFloor", groundFloorFile);
 formData.append("typicalFloor", typicalFloorFile);
 formData.append("roofFloor", roofFloorFile);
+if (brochureFile) formData.append("brochure", brochureFile);
 
     // Append description fields
     Object.keys(description).forEach((key) =>
@@ -178,6 +180,11 @@ formData.append("roofFloor", roofFloorFile);
   <div className="space-y-1 md:col-span-2">
     <label className="font-semibold">Roof Floor</label>
     <input className="border p-2 w-full" type="file" onChange={e => setRoofFloorFile(e.target.files[0])} />
+  </div>
+
+  <div className="space-y-1 md:col-span-2">
+    <label className="font-semibold">Brochure (PDF)</label>
+    <input className="border p-2 w-full" type="file" accept="application/pdf" onChange={e => setBrochureFile(e.target.files[0])} />
   </div>
   </div>
   
