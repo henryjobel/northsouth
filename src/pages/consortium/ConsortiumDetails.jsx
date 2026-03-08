@@ -135,7 +135,7 @@ export default function ProjectDetails() {
       <div className="relative w-full">
         <Carousel images={slideImages} />
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-black/20 pointer-events-none" />
 
         {/* Title + Description + Button — all centered together */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6 gap-5">
@@ -265,13 +265,13 @@ export default function ProjectDetails() {
       <section
         data-aos="fade-up"
         data-aos-duration="1000"
-        className="w-full bg-gradient-to-br from-slate-50 via-white to-green-50/30 py-20"
+        className="w-full bg-linear-to-br from-slate-50 via-white to-green-50/30 py-20"
       >
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col items-center mb-12">
             <p className="text-green-600 text-xs font-bold uppercase tracking-[0.2em] mb-2">Project Details</p>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Overview &amp; <span className="text-green-600">Specification</span></h2>
-            <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-green-500 to-transparent mt-4" />
+            <div className="w-16 h-0.5 bg-linear-to-r from-transparent via-green-500 to-transparent mt-4" />
           </div>
 
           <div className="flex flex-col lg:flex-row gap-10 items-stretch">
@@ -311,7 +311,7 @@ export default function ProjectDetails() {
             <div className="bg-white rounded-3xl shadow-2xl shadow-gray-100 border border-gray-100 p-8 flex flex-col h-full">
               {/* Header */}
               <div className="flex items-center gap-3 mb-8 pb-6 border-b border-gray-100">
-                <div className="w-1 h-10 bg-gradient-to-b from-green-400 to-green-600 rounded-full"></div>
+                <div className="w-1 h-10 bg-linear-to-b from-green-400 to-green-600 rounded-full"></div>
                 <div>
                   <p className="text-xs text-green-600 font-semibold uppercase tracking-widest">Technical</p>
                   <h2 className="text-2xl font-bold text-gray-900 tracking-wide">
@@ -337,7 +337,7 @@ export default function ProjectDetails() {
 
               <button
                 onClick={() => setEnquiryOpen(true)}
-                className="mt-8 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-green-200 hover:shadow-green-300 hover:scale-[1.02] transition-all duration-300 tracking-wide text-sm"
+                className="mt-8 bg-linear-to-r from-green-500 to-green-600 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-green-200 hover:shadow-green-300 hover:scale-[1.02] transition-all duration-300 tracking-wide text-sm"
               >
                 ⬇ Download Brochure
               </button>
@@ -366,7 +366,7 @@ export default function ProjectDetails() {
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 text-center mt-2">
               Features &amp; <span className="text-green-600">Amenities</span>
             </h2>
-            <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-green-500 to-transparent mt-5" />
+            <div className="w-16 h-0.5 bg-linear-to-r from-transparent via-green-500 to-transparent mt-5" />
             <p className="text-gray-500 mt-4 text-center max-w-xl text-sm leading-relaxed">
               Experience world-class facilities designed for modern living.
             </p>
@@ -388,7 +388,7 @@ export default function ProjectDetails() {
                 key={i}
                 className="group relative flex flex-col items-center justify-center gap-4 bg-white border border-gray-100 rounded-3xl p-8 min-h-[220px] shadow-sm hover:shadow-xl hover:shadow-green-100 hover:border-green-200 hover:-translate-y-2 transition-all duration-300 cursor-default overflow-hidden"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-green-50/0 to-green-100/0 group-hover:from-green-50/80 group-hover:to-green-100/40 transition-all duration-500 rounded-3xl" />
+                <div className="absolute inset-0 bg-linear-to-br from-green-50/0 to-green-100/0 group-hover:from-green-50/80 group-hover:to-green-100/40 transition-all duration-500 rounded-3xl" />
                 <div className="relative w-16 h-16 rounded-2xl bg-green-50 group-hover:bg-green-500 flex items-center justify-center text-4xl text-green-500 group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-lg group-hover:shadow-green-300 group-hover:scale-110">
                   {item.icon}
                 </div>
@@ -401,14 +401,14 @@ export default function ProjectDetails() {
         </div>
       </section>
 
-      <div className="bg-gradient-to-br from-slate-900 via-green-950 to-slate-900 py-20">
+      <div className="bg-linear-to-br from-slate-900 via-green-950 to-slate-900 py-20">
         {/* Title */}
         <div className="flex flex-col items-center mb-12">
           <span className="text-green-400 text-xs font-bold uppercase tracking-[0.25em] mb-3 bg-white/10 px-4 py-1.5 rounded-full border border-white/10">Floor Plans</span>
           <h2 className="text-4xl md:text-5xl font-bold text-center text-white">
             Key <span className="text-green-400">Plan</span>
           </h2>
-          <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-green-400 to-transparent mt-4" />
+          <div className="w-16 h-0.5 bg-linear-to-r from-transparent via-green-400 to-transparent mt-4" />
         </div>
 
         {/* Buttons */}
@@ -454,7 +454,7 @@ export default function ProjectDetails() {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-1">
             Photo <span className="text-green-600">Gallery</span>
           </h2>
-          <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-green-500 to-transparent mt-4" />
+          <div className="w-16 h-0.5 bg-linear-to-r from-transparent via-green-500 to-transparent mt-4" />
           <p className="text-gray-400 mt-3 text-sm font-medium">{photos.length} photos</p>
         </div>
 
@@ -549,7 +549,7 @@ export default function ProjectDetails() {
             >
               <IoCloseOutline />
             </button>
-            <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-green-100 py-16 px-4">
+            <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-green-50 to-green-100 py-16 px-4">
               <div className="w-full max-w-xl bg-white shadow-2xl rounded-2xl p-8 animate-fadeIn">
                 <h2 className="text-3xl font-bold text-center text-green-700 mb-8">
                   Enquiry Form <br />

@@ -1,83 +1,69 @@
 import { Link } from "react-router-dom";
 import { MdLocationOn } from "react-icons/md";
-import { FaArrowRight } from "react-icons/fa";
 
 export default function ProjectCard({ project }) {
   const status = project.status?.toLowerCase();
 
   const statusStyle = {
-    ready: "bg-green-500 text-white",
-    ongoing: "bg-amber-400 text-white",
-    upcoming: "bg-blue-500 text-white",
+    ready: "bg-green-500",
+    ongoing: "bg-amber-400",
+    upcoming: "bg-blue-500",
   };
 
   return (
-    <div className="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col">
-      {/* Image */}
-      <div className="relative w-full h-60 overflow-hidden">
-        <img
-          src={project.image[0]}
-          alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-        />
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+    <Link
+      to={`/consortiumDetails/${project._id}`}
+      state={{ project }}
+      className="block h-[70vh] relative group overflow-hidden rounded-2xl shadow-xl cursor-pointer"
+    >
+      {/* Full-cover image */}
+      <img
+        src={project.image?.[0]}
+        alt={project.title}
+        className="w-full h-full object-cover brightness-75 transition-transform duration-700 group-hover:scale-110"
+      />
 
-        {/* Status badge */}
-        <span
-          className={`absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow ${
-            statusStyle[status] || "bg-gray-400 text-white"
-          }`}
-        >
-          {project.status}
-        </span>
+      {/* Status badge */}
+      <span
+        className={`absolute top-4 left-4 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest text-white shadow-lg ${
+          statusStyle[status] || "bg-gray-500"
+        }`}
+      >
+        {project.status}
+      </span>
 
-        {/* Title on image bottom */}
-        <h3 className="absolute bottom-3 left-4 text-white text-lg font-bold drop-shadow-md leading-tight">
+      {/* Hover dark overlay */}
+      <div className="absolute inset-0 bg-black/55 opacity-0 group-hover:opacity-100 transition-all duration-500" />
+
+      {/* Bottom content */}
+      <div className="absolute left-0 right-0 bottom-0 px-6 pb-6 flex flex-col items-start">
+        {/* Title — slides up on hover */}
+        <h3 className="text-xl font-bold text-white leading-snug transition-transform duration-500 group-hover:-translate-y-2 drop-shadow-lg">
           {project.title}
         </h3>
-      </div>
 
-      {/* Body */}
-      <div className="flex flex-col flex-1 px-5 py-4 gap-3">
-        {/* Location */}
-        <div className="flex items-center gap-1 text-gray-500 text-sm">
-          <MdLocationOn className="text-green-500 text-lg shrink-0" />
-          <span className="truncate">{project.specs?.address}</span>
+        {/* Address + description — revealed on hover */}
+        <div className="max-h-0 overflow-hidden opacity-0 group-hover:max-h-32 group-hover:opacity-100 transition-all duration-500 mt-1 w-full">
+          {project.description?.generalFeature && (
+            <p className="text-white/80 text-sm leading-relaxed line-clamp-2">
+              {project.description.generalFeature}
+            </p>
+          )}
+          {project.specs?.address && (
+            <div className="flex items-center gap-1 mt-2">
+              <MdLocationOn className="text-green-400 text-sm shrink-0" />
+              <p className="text-green-300 text-xs font-semibold truncate">{project.specs.address}</p>
+            </div>
+          )}
         </div>
 
-        {/* Divider */}
-        <div className="h-px bg-gray-100" />
-
-        {/* Stats row */}
-        <div className="grid grid-cols-3 text-center text-xs text-gray-500 gap-2">
-          <div>
-            <p className="font-bold text-gray-800 text-sm">{project.specs?.floors || "—"}</p>
-            <p>Floors</p>
-          </div>
-          <div>
-            <p className="font-bold text-gray-800 text-sm">{project.specs?.apartments || "—"}</p>
-            <p>Units</p>
-          </div>
-          <div>
-            <p className="font-bold text-gray-800 text-sm">{project.specs?.parking || "—"}</p>
-            <p>Parking</p>
-          </div>
+        {/* Button — revealed on hover */}
+        <div className="overflow-hidden max-h-0 group-hover:max-h-16 opacity-0 group-hover:opacity-100 transition-all duration-500">
+          <button className="mt-4 py-2 px-6 border-2 border-white text-white text-sm font-bold hover:bg-white hover:text-black transition-all duration-300 tracking-wide">
+            View Project
+          </button>
         </div>
-
-        {/* Divider */}
-        <div className="h-px bg-gray-100" />
-
-        {/* CTA */}
-        <Link
-          to={`/consortiumDetails/${project._id}`}
-          state={{ project }}
-          className="mt-auto flex items-center justify-between gap-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all duration-300 group/btn"
-        >
-          <span>View Details</span>
-          <FaArrowRight className="transition-transform duration-300 group-hover/btn:translate-x-1" />
-        </Link>
       </div>
-    </div>
+    </Link>
   );
 }
