@@ -134,25 +134,93 @@ export default function ProjectDetails() {
     <div className="w-full h-full">
       <div className="relative w-full">
         <Carousel images={slideImages} />
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-black/20 pointer-events-none" />
 
-        {/* Title + Description + Button — all centered together */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6 gap-5">
-          <span className="text-xs md:text-sm uppercase tracking-[0.25em] text-green-400 font-semibold bg-white/10 px-4 py-1.5 rounded-full backdrop-blur-sm border border-white/20">
-            Premium Living
-          </span>
-          <h1 className="fade-scroll text-2xl md:text-4xl lg:text-6xl font-bold leading-tight drop-shadow-lg">
-            Welcome to <span className="text-green-400">{project.title}</span>
-            <br className="hidden md:block" />
-            <span className="font-light"> – Where Comfort Meets Luxury</span>
+        {/* Multi-layer overlay for depth */}
+        <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/10 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-r from-black/60 via-transparent to-transparent pointer-events-none" />
+
+        {/* TOP LEFT — brand tag */}
+        <div className="absolute top-6 left-6 md:top-10 md:left-12 flex items-center gap-3">
+          <div className="w-8 h-px bg-green-400"></div>
+          <span className="text-green-400 text-xs font-bold uppercase tracking-[0.3em]">North South Group</span>
+        </div>
+
+        {/* MAIN CONTENT — left aligned, bottom anchored */}
+        <div className="absolute inset-0 flex flex-col justify-end px-6 md:px-12 lg:px-20 pb-16 md:pb-20">
+          {/* Status pill */}
+          <div className="flex items-center gap-3 mb-5">
+            <span className="inline-flex items-center gap-2 bg-green-500/20 border border-green-400/40 backdrop-blur-sm text-green-300 text-xs font-bold uppercase tracking-[0.2em] px-4 py-1.5 rounded-full">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+              Premium Residential
+            </span>
+          </div>
+
+          {/* Title */}
+          <h1 className="fade-scroll text-3xl md:text-5xl lg:text-7xl font-black text-white leading-[1.05] mb-4 max-w-4xl tracking-tight">
+            {project.title}
           </h1>
-          <p className="text-xs md:text-sm lg:text-lg max-w-2xl text-white/80 leading-relaxed">
-            Spacious apartments with state-of-the-art amenities in the heart of Dhaka.
-          </p>
-          <button className="mt-2 px-8 py-3 text-sm md:px-10 md:py-3.5 md:text-base bg-green-500 hover:bg-green-600 text-white font-semibold rounded-full shadow-xl shadow-green-500/30 hover:shadow-green-500/50 transition-all duration-300 hover:scale-105 tracking-wide">
-            Explore Now
-          </button>
+
+          {/* Subtitle line */}
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-10 h-0.5 bg-green-400"></div>
+            <p className="text-white/70 text-sm md:text-base font-light tracking-wide">
+              Where Comfort Meets Luxury
+            </p>
+          </div>
+
+          {/* Bottom row — description + CTA */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-end gap-6">
+            <p className="text-white/60 text-sm leading-relaxed max-w-sm">
+              Spacious apartments with state-of-the-art amenities in the heart of Dhaka.
+            </p>
+            <div className="flex gap-3 shrink-0">
+              <button
+                onClick={() => setEnquiryOpen(true)}
+                className="px-7 py-3 bg-green-500 hover:bg-green-400 text-white text-sm font-bold rounded-none tracking-widest uppercase transition-all duration-300 hover:shadow-xl hover:shadow-green-500/30"
+              >
+                Download Brochure
+              </button>
+              <button className="px-7 py-3 border border-white/40 hover:border-white text-white text-sm font-semibold rounded-none tracking-widest uppercase transition-all duration-300 hover:bg-white/10 backdrop-blur-sm">
+                Explore
+              </button>
+            </div>
+          </div>
+
+          {/* Stats strip */}
+          {(projectSpecs.floors || projectSpecs.apartments || projectSpecs.parking) && (
+            <div className="mt-10 flex flex-wrap gap-px border-t border-white/10 pt-6">
+              {projectSpecs.floors && (
+                <div className="flex flex-col pr-8 mr-8 border-r border-white/10">
+                  <span className="text-2xl md:text-3xl font-black text-white">{projectSpecs.floors}</span>
+                  <span className="text-white/40 text-xs uppercase tracking-widest mt-0.5">Floors</span>
+                </div>
+              )}
+              {projectSpecs.apartments && (
+                <div className="flex flex-col pr-8 mr-8 border-r border-white/10">
+                  <span className="text-2xl md:text-3xl font-black text-white">{projectSpecs.apartments}</span>
+                  <span className="text-white/40 text-xs uppercase tracking-widest mt-0.5">Units</span>
+                </div>
+              )}
+              {projectSpecs.parking && (
+                <div className="flex flex-col pr-8">
+                  <span className="text-2xl md:text-3xl font-black text-white">{projectSpecs.parking}</span>
+                  <span className="text-white/40 text-xs uppercase tracking-widest mt-0.5">Parking</span>
+                </div>
+              )}
+              {projectSpecs.handover && (
+                <div className="flex flex-col pl-8 border-l border-white/10">
+                  <span className="text-2xl md:text-3xl font-black text-white">{projectSpecs.handover}</span>
+                  <span className="text-white/40 text-xs uppercase tracking-widest mt-0.5">Handover</span>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-6 right-8 hidden md:flex flex-col items-center gap-2">
+          <span className="text-white/30 text-xs uppercase tracking-[0.2em] rotate-90 mb-4">Scroll</span>
+          <div className="w-px h-12 bg-linear-to-b from-white/30 to-transparent"></div>
         </div>
       </div>
 
