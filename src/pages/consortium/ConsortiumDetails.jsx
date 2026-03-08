@@ -134,65 +134,62 @@ export default function ProjectDetails() {
     <div className="w-full h-full">
       <div className="relative w-full">
         <Carousel images={slideImages} />
-        <h1
-          className="fade-scroll absolute inset-0 flex items-center justify-center 
-             text-white text-2xl md:text-4xl lg:text-6xl font-bold 
-             text-center px-8 py-6 md:px-16 md:py-10"
-        >
-          Welcome to {project.title} – Where Comfort Meets Luxury
-        </h1>
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 pointer-events-none" />
 
-        <div
-          className="
-  absolute 
-  bottom-3 left-3                
-  md:bottom-6 md:left-6         
-  text-white 
-  max-w-xs md:max-w-sm 
-  space-y-2 md:space-y-3
-"
-        >
-          <p className="text-xs md:text-sm lg:text-xl py-1 md:py-4">
-            Spacious apartments with state-of-the-art amenities in the heart of
-            Dhaka.
+        {/* Title + Description + Button — all centered together */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-6 gap-5">
+          <span className="text-xs md:text-sm uppercase tracking-[0.25em] text-green-400 font-semibold bg-white/10 px-4 py-1.5 rounded-full backdrop-blur-sm border border-white/20">
+            Premium Living
+          </span>
+          <h1 className="fade-scroll text-2xl md:text-4xl lg:text-6xl font-bold leading-tight drop-shadow-lg">
+            Welcome to <span className="text-green-400">{project.title}</span>
+            <br className="hidden md:block" />
+            <span className="font-light"> – Where Comfort Meets Luxury</span>
+          </h1>
+          <p className="text-xs md:text-sm lg:text-lg max-w-2xl text-white/80 leading-relaxed">
+            Spacious apartments with state-of-the-art amenities in the heart of Dhaka.
           </p>
-
-          <button
-            className="
-    px-4 py-1 text-sm              
-    md:px-6 md:py-2 md:text-base
-    border-2 border-white 
-    text-white font-semibold 
-    rounded-md shadow-lg 
-    hover:bg-green-700 transition
-  "
-          >
-            Click Here
+          <button className="mt-2 px-8 py-3 text-sm md:px-10 md:py-3.5 md:text-base bg-green-500 hover:bg-green-600 text-white font-semibold rounded-full shadow-xl shadow-green-500/30 hover:shadow-green-500/50 transition-all duration-300 hover:scale-105 tracking-wide">
+            Explore Now
           </button>
         </div>
       </div>
 
       {/* SECTION 1 */}
-      <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 py-20 px-6">
+      <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 py-20 px-6">
         {/* LEFT TEXT */}
         <div
           className="flex flex-col justify-center"
           data-aos="fade-right"
           data-aos-duration="1000"
         >
-          <h2 className="slide-title text-3xl md:text-4xl lg:text-5xl font-bold text-center lg:text-left">
-            Features & Amenities
+          <p className="text-green-600 text-xs font-bold uppercase tracking-[0.2em] mb-3">What We Offer</p>
+          <h2 className="slide-title text-3xl md:text-4xl lg:text-5xl font-bold text-center lg:text-left mb-8 text-gray-900 leading-tight">
+            Features &amp; <span className="text-green-600">Amenities</span>
           </h2>
 
-          <b className="py-4">GENERAL FEATURES</b>
-          <p className="text-gray-700 text-lg leading-8 mt-6 text-center lg:text-left">
-            {desc.generalFeature}
-          </p>
+          <div className="space-y-6">
+            <div className="group p-5 rounded-2xl border border-gray-100 hover:border-green-200 hover:bg-green-50/50 transition-all duration-300">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-1 h-5 bg-green-500 rounded-full"></div>
+                <span className="text-xs font-bold uppercase tracking-widest text-green-700">General Features</span>
+              </div>
+              <p className="text-gray-600 text-base leading-7 pl-3">
+                {desc.generalFeature}
+              </p>
+            </div>
 
-          <b className="py-4">ELEVATOR</b>
-          <p className="text-gray-700 text-lg leading-8 mt-2">
-            {desc.elevator}
-          </p>
+            <div className="group p-5 rounded-2xl border border-gray-100 hover:border-green-200 hover:bg-green-50/50 transition-all duration-300">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-1 h-5 bg-green-500 rounded-full"></div>
+                <span className="text-xs font-bold uppercase tracking-widest text-green-700">Elevator</span>
+              </div>
+              <p className="text-gray-600 text-base leading-7 pl-3">
+                {desc.elevator}
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* RIGHT IMAGE */}
@@ -202,25 +199,31 @@ export default function ProjectDetails() {
             data-aos="fade-left"
             data-aos-duration="1000"
           >
-            <img
-              src={images[4]}
-              alt="Project"
-              className="rounded-xl w-full h-[80vh] object-contain"
-            />
+            <div className="relative w-full rounded-3xl overflow-hidden shadow-2xl shadow-gray-200">
+              <img
+                src={images[4]}
+                alt="Project"
+                className="w-full h-[80vh] object-contain"
+              />
+              <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-3xl pointer-events-none" />
+            </div>
           </div>
         )}
       </div>
 
       {/* SECTION 2 */}
-      <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 px-6 pb-20">
+      <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 px-6 pb-24">
         {/* IMAGE LEFT */}
         {images[2] && (
           <div className="flex" data-aos="fade-right" data-aos-duration="1000">
-            <img
-              src={images[2]}
-              alt="Building"
-              className="rounded-xl w-full h-[80vh] object-contain"
-            />
+            <div className="relative w-full rounded-3xl overflow-hidden shadow-2xl shadow-gray-200">
+              <img
+                src={images[2]}
+                alt="Building"
+                className="w-full h-[80vh] object-contain"
+              />
+              <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-3xl pointer-events-none" />
+            </div>
           </div>
         )}
 
@@ -230,20 +233,31 @@ export default function ProjectDetails() {
           data-aos="fade-left"
           data-aos-duration="1000"
         >
-          <b className="py-4">BATHROOM FEATURES</b>
-          <p className="text-gray-700 text-lg leading-8 mt-6">
-            {desc.bathroomFeature}
-          </p>
+          <div className="space-y-6">
+            <div className="group p-5 rounded-2xl border border-gray-100 hover:border-green-200 hover:bg-green-50/50 transition-all duration-300">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-1 h-5 bg-green-500 rounded-full"></div>
+                <span className="text-xs font-bold uppercase tracking-widest text-green-700">Bathroom Features</span>
+              </div>
+              <p className="text-gray-600 text-base leading-7 pl-3">{desc.bathroomFeature}</p>
+            </div>
 
-          <b className="py-4">KITCHEN DOOR</b>
-          <p className="text-gray-700 text-lg leading-8 mt-2">
-            {desc.kitchenDoor}
-          </p>
+            <div className="group p-5 rounded-2xl border border-gray-100 hover:border-green-200 hover:bg-green-50/50 transition-all duration-300">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-1 h-5 bg-green-500 rounded-full"></div>
+                <span className="text-xs font-bold uppercase tracking-widest text-green-700">Kitchen Door</span>
+              </div>
+              <p className="text-gray-600 text-base leading-7 pl-3">{desc.kitchenDoor}</p>
+            </div>
 
-          <b className="py-4">MAIDS TOILET (IF ANY)</b>
-          <p className="text-gray-700 text-lg leading-8 mt-2">
-            {desc.maidsToilet}
-          </p>
+            <div className="group p-5 rounded-2xl border border-gray-100 hover:border-green-200 hover:bg-green-50/50 transition-all duration-300">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-1 h-5 bg-green-500 rounded-full"></div>
+                <span className="text-xs font-bold uppercase tracking-widest text-green-700">Maids Toilet (If Any)</span>
+              </div>
+              <p className="text-gray-600 text-base leading-7 pl-3">{desc.maidsToilet}</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -251,19 +265,26 @@ export default function ProjectDetails() {
       <section
         data-aos="fade-up"
         data-aos-duration="1000"
-        className="w-full bg-gradient-to-br from-gray-50 to-white py-16"
+        className="w-full bg-gradient-to-br from-slate-50 via-white to-green-50/30 py-20"
       >
-        <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row gap-12 items-stretch">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col items-center mb-12">
+            <p className="text-green-600 text-xs font-bold uppercase tracking-[0.2em] mb-2">Project Details</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Overview &amp; <span className="text-green-600">Specification</span></h2>
+            <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-green-500 to-transparent mt-4" />
+          </div>
+
+          <div className="flex flex-col lg:flex-row gap-10 items-stretch">
           {/* LEFT: IMAGE SLIDER */}
           <div className="lg:w-1/2 w-full flex flex-col gap-4">
-            <div className="relative w-full rounded-2xl overflow-hidden shadow-xl bg-white border border-gray-100 flex-1">
+            <div className="relative w-full rounded-3xl overflow-hidden shadow-2xl shadow-gray-200/80 bg-white border border-gray-100 flex-1">
               <img
                 src={images[current]}
                 alt="project"
                 className="w-full h-full object-cover duration-700"
               />
               {/* Image counter badge */}
-              <div className="absolute bottom-3 right-3 bg-black/50 text-white text-xs px-3 py-1 rounded-full">
+              <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full font-medium">
                 {current + 1} / {images.length}
               </div>
             </div>
@@ -275,10 +296,10 @@ export default function ProjectDetails() {
                   key={i}
                   src={img}
                   onClick={() => setCurrent(i)}
-                  className={`w-14 h-14 object-cover rounded-lg cursor-pointer transition-all duration-200 border-2 ${
+                  className={`w-14 h-14 object-cover rounded-xl cursor-pointer transition-all duration-200 border-2 ${
                     current === i
-                      ? "border-green-500 scale-105 shadow-md"
-                      : "border-transparent opacity-70 hover:opacity-100"
+                      ? "border-green-500 scale-110 shadow-lg shadow-green-200"
+                      : "border-transparent opacity-60 hover:opacity-100 hover:scale-105"
                   }`}
                 />
               ))}
@@ -287,17 +308,20 @@ export default function ProjectDetails() {
 
           {/* RIGHT: SPECIFICATION */}
           <div className="lg:w-1/2 w-full flex flex-col">
-            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 flex flex-col h-full">
+            <div className="bg-white rounded-3xl shadow-2xl shadow-gray-100 border border-gray-100 p-8 flex flex-col h-full">
               {/* Header */}
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-1.5 h-10 bg-green-500 rounded-full"></div>
-                <h2 className="text-3xl font-bold text-gray-800 tracking-wide">
-                  SPECIFICATION
-                </h2>
+              <div className="flex items-center gap-3 mb-8 pb-6 border-b border-gray-100">
+                <div className="w-1 h-10 bg-gradient-to-b from-green-400 to-green-600 rounded-full"></div>
+                <div>
+                  <p className="text-xs text-green-600 font-semibold uppercase tracking-widest">Technical</p>
+                  <h2 className="text-2xl font-bold text-gray-900 tracking-wide">
+                    Specification
+                  </h2>
+                </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {Object.entries(projectSpecs).map(([key, value]) => (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {Object.entries(projectSpecs).filter(([key]) => key !== 'id' && key !== '_id').map(([key, value]) => (
                   <Specs
                     key={key}
                     icon={specIcons[key]}
@@ -313,11 +337,12 @@ export default function ProjectDetails() {
 
               <button
                 onClick={() => setEnquiryOpen(true)}
-                className="bg-green-500 text-white font-semibold px-4 py-2 rounded-sm shadow-lg animate-bounce hover:scale-110 transition duration-300 ease-in-out mt-6"
+                className="mt-8 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-green-200 hover:shadow-green-300 hover:scale-[1.02] transition-all duration-300 tracking-wide text-sm"
               >
-                Download Brochure
+                ⬇ Download Brochure
               </button>
             </div>
+          </div>
           </div>
         </div>
       </section>
@@ -332,17 +357,17 @@ export default function ProjectDetails() {
       <section
         data-aos="fade-up"
         data-aos-duration="1000"
-        className="w-full bg-gradient-to-br from-gray-50 to-white py-20 px-6"
+        className="w-full bg-white py-24 px-6"
       >
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="flex flex-col items-center mb-14">
-            <p className="text-green-600 text-sm font-semibold uppercase tracking-widest mb-2">What We Offer</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 text-center">
-              Features &amp; Amenities
+          <div className="flex flex-col items-center mb-16">
+            <span className="text-green-600 text-xs font-bold uppercase tracking-[0.25em] mb-3 bg-green-50 px-4 py-1.5 rounded-full border border-green-100">What We Offer</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 text-center mt-2">
+              Features &amp; <span className="text-green-600">Amenities</span>
             </h2>
-            <div className="w-16 h-1 bg-green-500 rounded-full mt-4" />
-            <p className="text-gray-500 mt-4 text-center max-w-xl text-sm">
+            <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-green-500 to-transparent mt-5" />
+            <p className="text-gray-500 mt-4 text-center max-w-xl text-sm leading-relaxed">
               Experience world-class facilities designed for modern living.
             </p>
           </div>
@@ -361,12 +386,13 @@ export default function ProjectDetails() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="group flex flex-col items-center gap-4 bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:border-green-200 hover:-translate-y-1 transition-all duration-300 cursor-default"
+                className="group relative flex flex-col items-center justify-center gap-4 bg-white border border-gray-100 rounded-3xl p-8 min-h-[220px] shadow-sm hover:shadow-xl hover:shadow-green-100 hover:border-green-200 hover:-translate-y-2 transition-all duration-300 cursor-default overflow-hidden"
               >
-                <div className="w-16 h-16 rounded-2xl bg-green-50 group-hover:bg-green-500 flex items-center justify-center text-4xl text-green-500 group-hover:text-white transition-all duration-300 shadow-sm">
+                <div className="absolute inset-0 bg-gradient-to-br from-green-50/0 to-green-100/0 group-hover:from-green-50/80 group-hover:to-green-100/40 transition-all duration-500 rounded-3xl" />
+                <div className="relative w-16 h-16 rounded-2xl bg-green-50 group-hover:bg-green-500 flex items-center justify-center text-4xl text-green-500 group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-lg group-hover:shadow-green-300 group-hover:scale-110">
                   {item.icon}
                 </div>
-                <p className="text-gray-700 group-hover:text-green-700 font-semibold text-sm text-center leading-tight transition-colors duration-300">
+                <p className="relative text-gray-700 group-hover:text-green-800 font-semibold text-sm text-center leading-snug transition-colors duration-300">
                   {item.label}
                 </p>
               </div>
@@ -375,22 +401,23 @@ export default function ProjectDetails() {
         </div>
       </section>
 
-      <div className="bg-gradient-to-r from-green-50 to-green-100 py-16 mt-15">
+      <div className="bg-gradient-to-br from-slate-900 via-green-950 to-slate-900 py-20">
         {/* Title */}
-        <h2 className="text-4xl font-bold text-center text-gray-800 mb-10 animate-fadeInDown">
-          Key Plan
-        </h2>
+        <div className="flex flex-col items-center mb-12">
+          <span className="text-green-400 text-xs font-bold uppercase tracking-[0.25em] mb-3 bg-white/10 px-4 py-1.5 rounded-full border border-white/10">Floor Plans</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-center text-white">
+            Key <span className="text-green-400">Plan</span>
+          </h2>
+          <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-green-400 to-transparent mt-4" />
+        </div>
 
         {/* Buttons */}
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="flex flex-wrap justify-center gap-4">
           {buttons.map((btn, index) => (
             <button
               key={index}
-              onClick={() => handleKeyPlanOpen(keyPhotos[index])} // pass the correct image
-              className={`bg-green-500 text-white font-semibold px-6 py-3 rounded-lg shadow-lg
-                       transform transition-all duration-500 hover:scale-110 hover:bg-gradient-to-r hover:from-green-200 hover:to-green-600
-        hover:shadow-green-500/50
-                       animate-bounceAnimation`}
+              onClick={() => handleKeyPlanOpen(keyPhotos[index])}
+              className="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold px-7 py-3.5 rounded-xl shadow-lg hover:bg-green-500 hover:border-green-500 hover:shadow-green-500/30 transform transition-all duration-300 hover:scale-105 tracking-wide text-sm"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               {btn}
@@ -420,14 +447,15 @@ export default function ProjectDetails() {
         )}
       </div>
      
-      <div className="w-full bg-white py-16">
+      <div className="w-full bg-white py-20">
         {/* Header */}
-        <div className="flex flex-col items-center mb-10">
-          <h2 className="text-4xl font-bold text-gray-900 tracking-widest uppercase">
-            Photo Gallery
+        <div className="flex flex-col items-center mb-12">
+          <span className="text-green-600 text-xs font-bold uppercase tracking-[0.25em] mb-3 bg-green-50 px-4 py-1.5 rounded-full border border-green-100">Visual Tour</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-1">
+            Photo <span className="text-green-600">Gallery</span>
           </h2>
-          <div className="w-20 h-1 bg-green-500 rounded-full mt-3"></div>
-          <p className="text-gray-400 mt-2 text-sm">{photos.length} photos</p>
+          <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-green-500 to-transparent mt-4" />
+          <p className="text-gray-400 mt-3 text-sm font-medium">{photos.length} photos</p>
         </div>
 
         <div className="w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-1">
@@ -567,11 +595,11 @@ export default function ProjectDetails() {
 
 function Specs({ label, value, icon }) {
   return (
-    <div className="flex items-center gap-4 bg-gray-50 hover:bg-green-50 border border-gray-100 hover:border-green-200 rounded-xl px-4 py-3 transition-all duration-200">
-      <div className="text-3xl text-green-500 shrink-0">{icon}</div>
-      <div>
-        <p className="text-xs text-gray-400 uppercase tracking-wider font-medium">{label}</p>
-        <p className="text-gray-800 font-semibold text-sm mt-0.5">{value}</p>
+    <div className="flex items-center gap-3 bg-gray-50/80 hover:bg-green-50 border border-gray-100 hover:border-green-200 rounded-2xl px-4 py-3.5 transition-all duration-200 group">
+      <div className="text-2xl text-green-500 group-hover:text-green-600 shrink-0 transition-colors">{icon}</div>
+      <div className="min-w-0">
+        <p className="text-xs text-gray-400 uppercase tracking-wider font-semibold">{label}</p>
+        <p className="text-gray-800 font-bold text-sm mt-0.5 truncate">{value}</p>
       </div>
     </div>
   );
